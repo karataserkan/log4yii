@@ -56,7 +56,7 @@ class LogTarget extends Target
             $result['message'] = $text;
         }
         $message = Json::encode($result);
-        return $message;
+        return $message."\n";
     }
 
     /**
