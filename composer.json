@@ -1,0 +1,22 @@
+{
+    "name": "karataserkan/log4yii",
+    "description": "Yii2 Log Target",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","log","log-target"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "erkan karatas",
+            "email": "mail@ekaratas.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-httpclient": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "karataserkan\\log4yii\\": ""
+        }
+    }
+}
