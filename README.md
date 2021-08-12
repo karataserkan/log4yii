@@ -2,6 +2,8 @@ log4yii
 ===============
 log4yii
 
+[![Latest Stable Version](http://poser.pugx.org/karataserkan/log4yii/v)](https://packagist.org/packages/karataserkan/log4yii) [![Total Downloads](http://poser.pugx.org/karataserkan/log4yii/downloads)](https://packagist.org/packages/karataserkan/log4yii) [![Monthly Downloads](http://poser.pugx.org/karataserkan/log4yii/d/monthly)](https://packagist.org/packages/karataserkan/log4yii) [![License](http://poser.pugx.org/karataserkan/log4yii/license)](https://packagist.org/packages/karataserkan/log4yii)
+
 Installation
 ------------
 
