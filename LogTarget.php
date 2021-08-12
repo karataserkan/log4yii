@@ -20,6 +20,13 @@ class LogTarget extends Target
         }
     }
 
+    public function init()
+    {
+        if (!method_exists(Yii::$app->request, 'getId')) {
+            Yii::$app->request->attachBehavior('log4yii', RequestBehavior::class);
+        }
+    }
+
     public function sendLog($message)
     {
     }
@@ -32,7 +39,7 @@ class LogTarget extends Target
             'application' => Yii::$app->name,
             'category'    => $category,
             'log_level'   => Logger::getLevelName($level),
-            'user_id'     => Yii::$app->user->isGuest ? '-' : Yii::$app->user->identity->id,
+            'user_id'     => (!Yii::$app->user || Yii::$app->user->isGuest) ? '-' : Yii::$app->user->identity->id,
             'timestamp'   => $timestamp * 1000,
             'ip_src_addr' => Yii::$app->request->getUserIp(),
             'request_id'  => Yii::$app->request->getId(),

@@ -13,8 +13,32 @@ class LogMessage extends \yii\base\BaseObject
 
     public function init()
     {
-        if (!$this->loggedUser) {
-            $this->loggedUser = Yii::$app->user->isGuest ? 'Misafir' : Yii::$app->user->identity->email;
+        $this->setLoggedUser();
+    }
+
+    public function setLoggedUser()
+    {
+        if ($this->loggedUser) {
+            return $this->loggedUser;
         }
+
+        if (!Yii::$app->user) {
+            $this->loggedUser = 'Misafir';
+            return $this->loggedUser;
+        }
+
+        if (Yii::$app->user->isGuest) {
+            $this->loggedUser = 'Misafir';
+            return $this->loggedUser;
+        }
+
+        $model = Yii::$app->user->identity;
+        if ($model->hasAttribute('email')) {
+            $this->loggedUser = $model->email;
+            return $this->loggedUser;
+        }
+
+        $this->loggedUser = $model->id;
+        return $this->loggedUser;
     }
 }

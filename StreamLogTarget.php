@@ -19,6 +19,7 @@ class StreamLogTarget extends LogTarget
 
     public function init()
     {
+        parent::init();
         if (empty($this->fileProcess) && empty($this->url)) {
             throw new InvalidConfigException("Either 'url' or 'fp' mus be set.");
         }
