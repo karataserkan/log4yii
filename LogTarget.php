@@ -34,12 +34,16 @@ class LogTarget extends Target
     public function prepareMessage($message)
     {
         list($text, $level, $category, $timestamp) = $message;
+        $user_id = '-';
+        if (Yii::$app->get('user', false)) {
+            $user_id = (!Yii::$app->user || Yii::$app->user->isGuest) ? '-' : Yii::$app->user->identity->id;
+        }
 
         $result = [
             'application' => Yii::$app->name,
             'category'    => $category,
             'log_level'   => Logger::getLevelName($level),
-            'user_id'     => (!Yii::$app->user || Yii::$app->user->isGuest) ? '-' : Yii::$app->user->identity->id,
+            'user_id'     => $user_id,
             'timestamp'   => $timestamp * 1000,
             'ip_src_addr' => Yii::$app->request->getUserIp(),
             'request_id'  => Yii::$app->request->getId(),
