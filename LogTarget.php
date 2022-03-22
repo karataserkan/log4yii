@@ -11,6 +11,7 @@ use yii\log\Target;
 class LogTarget extends Target
 {
     public $microtime = true;
+    public $defaultUserId = '-';
 
     public function export()
     {
@@ -34,9 +35,9 @@ class LogTarget extends Target
     public function prepareMessage($message)
     {
         list($text, $level, $category, $timestamp) = $message;
-        $user_id = '-';
+        $user_id = $this->defaultUserId;
         if (Yii::$app->get('user', false)) {
-            $user_id = (!Yii::$app->user || Yii::$app->user->isGuest) ? '-' : Yii::$app->user->identity->id;
+            $user_id = (!Yii::$app->user || Yii::$app->user->isGuest) ? $this->defaultUserId : Yii::$app->user->identity->id;
         }
 
         $result = [
