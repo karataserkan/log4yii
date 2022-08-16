@@ -36,7 +36,7 @@ class LogTarget extends Target
     {
         list($text, $level, $category, $timestamp) = $message;
         $user_id = $this->defaultUserId;
-        if (Yii::$app->get('user', false)) {
+        if (Yii::$app->has('user', true)) {
             $user_id = (!Yii::$app->user || Yii::$app->user->isGuest) ? $this->defaultUserId : Yii::$app->user->identity->id;
         }
 
